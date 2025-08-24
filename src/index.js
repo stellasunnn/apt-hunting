@@ -1,21 +1,21 @@
 import { getPrometheusAvailabilityById } from "./prometheus";
-import { saveCurrentAvailability, getLatestAvailability } from "./db";
 import { compareLatestWithCurrent } from "./util";
 import { Resend } from 'resend';
 import { env } from "cloudflare:workers";
 
+const apt_codes = {
+	4884573: 'hiro',
+	4989445: 'hadley',
+	3848844: 'montrose',
+	3845992: 'cobalt',
+	4989446: 'tillery',
+	3857931: 'iron works',
+	4004472: '100 moffett',
+	2757018: 'madera'
+}
 export default {
 	async fetch(req) {
-		if (req.method === 'GET') {
-			const res = await getPrometheusAvailabilityById(3848844)
-			const response = JSON.stringify(res)
-			// await saveCurrentAvailability('Montrose', 3848844, response)
-			// const latest = await getLatestAvailability(3848844)
-			const test = await compareLatestWithCurrent(3848844)
-			return new Response(test)
-		} else {
-			return new Response('Invalid method', { status: 405 })
-		}
+		return new Response('new response')
 	},
 
 	async scheduled(event, env, ctx) {
@@ -24,7 +24,7 @@ export default {
 		console.log('got message' + message)
 		const resend = new Resend(env.RESEND_API_TOKEN);
 		console.log('email sending')
-		resend.emails.send({
+		await resend.emails.send({
 			from: 'onboarding@resend.dev',
 			to: ['stellasunxx@gmail.com', 'yoav.zimet@gmail.com'],
 			subject: 'NI HAO, Apartment new INFO <33',
