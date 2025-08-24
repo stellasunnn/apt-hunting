@@ -1,0 +1,63 @@
+{
+  "id": "6d23ad7b-d331-4dba-b3f0-20dff385ca8b",
+  "prevId": "84deb8a2-db63-467f-ad43-a1d600321be8",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.apt_availability": {
+      "name": "apt_availability",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "apt_code": {
+          "name": "apt_code",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "current_availability": {
+          "name": "current_availability",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "timestamp": {
+          "name": "timestamp",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

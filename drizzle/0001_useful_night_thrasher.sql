@@ -1,0 +1,1 @@
+ALTER TABLE "apt_availability" ADD COLUMN "timestamp" timestamp DEFAULT now();
